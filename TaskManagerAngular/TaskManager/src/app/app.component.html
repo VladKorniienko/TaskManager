@@ -1,0 +1,14 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side">
+    <div class="container-fluid">
+      <app-menu></app-menu>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet class="container1">
+      <div><button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon aria-hidden="false" aria-label="reorder">reorder</mat-icon>
+        </button></div>
+    </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,49 @@
+<mat-toolbar color=primary>LIST OF ALL USERS AND THEIR TASKS</mat-toolbar>
+<br>
+<div class="row">
+  <div class="col col-md-2 container1">
+    <button mat-raised-button color=primary><a [routerLink]="['/userTasks/create']" role="button">Create</a></button>
+  </div>
+
+  <br>
+  <br>
+</div>
+<mat-form-field class="container1">
+  <mat-label>Select user</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let u of users" [value]="u.login" (click)="getAllTasksForUser(u.login)">{{u.login}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="row">
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Task Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ut of userTask">
+            <td>{{ut.user.name+' '+ut.user.surname}}</td>
+            <td>{{ut.task.name}}</td>
+            <td>{{ut.task.status}}</td>
+            <td><button mat-icon-button>
+                <mat-icon aria-hidden="false" aria-label="delete" (click)="deleteUserTask(ut.userId,ut.taskId)">delete
+                </mat-icon>
+              </button></td>
+            <td><button mat-raised-button color=primary (click)="redirectToTaskDetails(ut.taskId)">Task details</button>
+            </td>
+            <td><button mat-raised-button color=primary (click)="redirectToUserDetails(ut.userId)">User details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

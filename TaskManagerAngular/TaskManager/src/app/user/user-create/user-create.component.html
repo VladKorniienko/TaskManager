@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <form [formGroup]="userForm" autocomplete="off" novalidate (ngSubmit)="createUser(userForm.value)">
+      <div class="form-horizontal">
+   
+        <div class="form-group">
+          <label for="login" class="control-label col-md-2">Login: </label>
+          <div class="col-md-5">
+            <input type="text" formControlName="login" id="login" class="form-control" />
+          </div>
+          <div class="col-md-5">
+            <em *ngIf="validateControl('login') && hasError('login', 'required')">Login is required</em>
+            <em *ngIf="validateControl('login') && hasError('login', 'maxlength')">Maximum allowed length is 60 characters.</em>
+            <em *ngIf="validateControl('login') && hasError('login', 'minlength')">Minimum allowed length is 6 characters.</em>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="control-label col-md-2">Password: </label>
+            <div class="col-md-5">
+                <input type="password" formControlName="password" id="password" class="form-control" />
+            </div>
+            <div class="col-md-5">
+              <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
+              <em *ngIf="validateControl('password') && hasError('password', 'maxlength')">Maximum allowed length is 60 characters.</em>
+              <em *ngIf="validateControl('password') && hasError('password', 'minlength')">Minimum allowed length is 6 characters.</em>
+            </div>
+          </div>
+   
+        
+   
+        <div class="form-group">
+          <label for="name" class="control-label col-md-2">Name: </label>
+          <div class="col-md-5">
+            <input type="text" formControlName="name" id="name" class="form-control" />
+          </div>
+          <div class="col-md-5">
+            <em *ngIf="validateControl('name') && hasError('name', 'required')">Name is required</em>
+            <em *ngIf="validateControl('name') && hasError('name', 'maxlength')">Maximum allowed length is 60 characters.</em>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="surname" class="control-label col-md-2">Surname: </label>
+            <div class="col-md-5">
+              <input type="text" formControlName="surname" id="surname" class="form-control" />
+            </div>
+            <div class="col-md-5">
+              <em *ngIf="validateControl('surname') && hasError('surname', 'required')">Surname is required</em>
+              <em *ngIf="validateControl('surname') && hasError('surname', 'maxlength')">Maximum allowed length is 60 characters.</em>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="control-label col-md-2">Email: </label>
+            <div class="col-md-5">
+              <input type="email" formControlName="email" id="email" class="form-control" />
+            </div>
+            <div class="col-md-5">
+              <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
+              <em *ngIf="validateControl('email') && hasError('email', 'maxlength')">Maximum allowed length is 60 characters.</em>
+            </div>
+          </div>
+
+        
+   
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-1">
+              <button mat-raised-button  [disabled]="!userForm.valid" (click)="openSnackBar('Successfully created!','Close')">Save</button>
+            </div>
+            <div class="col-md-1">
+                <button mat-raised-button color=warn (click)="redirectToUserList()">Cancel</button>
+            </div>
+        </div>
+        
+      </div>
+    </form>
+   
+    
+   
+  </div>

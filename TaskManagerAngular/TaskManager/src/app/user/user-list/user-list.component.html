@@ -1,0 +1,39 @@
+<mat-toolbar color=primary>LIST OF ALL USERS</mat-toolbar>
+<br>
+
+<div class="row">
+  <div class="col-md-offset-10 col-md-2">
+    <button mat-raised-button color=primary><a [routerLink]="['/users/create']" role="button">Create user</a></button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Login</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>{{user.login }}</td>
+            <td>{{user.email }}</td>
+            <td><button mat-raised-button color=primary type="button" id="update"
+                (click)="redirectToUpdatePage(user.id)">Update</button></td>
+            <td><button mat-icon-button>
+                <mat-icon aria-hidden="false" aria-label="delete" (click)="redirectToDeletePage(user.id)">delete
+                </mat-icon>
+              </button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

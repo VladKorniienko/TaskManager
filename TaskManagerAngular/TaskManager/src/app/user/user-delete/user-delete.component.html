@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 ">
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="login" class="control-label">Login:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="login">
+            {{user?.login}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="name" class="control-label">Name:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="name">
+            {{user?.name}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="surname" class="control-label">Surname:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="surname">
+            {{user?.surname}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="email" class="control-label">Email:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="email">
+            {{user?.email}}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-offset-8 col-md-1">
+      <button mat-raised-button color=warn (click)="deleteUser()">Delete</button>
+    </div>
+    <div class="col-md-1">
+      <button mat-raised-button (click)="redirectToUserList()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+C:\Users\yyyy\source\repos\TaskManager.BL\bin\Debug\netcoreapp3.0\TaskManager.BLL.deps.json
+C:\Users\yyyy\source\repos\TaskManager.BL\bin\Debug\netcoreapp3.0\TaskManager.BLL.dll
+C:\Users\yyyy\source\repos\TaskManager.BL\bin\Debug\netcoreapp3.0\TaskManager.BLL.pdb
+C:\Users\yyyy\source\repos\TaskManager.BL\bin\Debug\netcoreapp3.0\TaskManager.DAL.dll
+C:\Users\yyyy\source\repos\TaskManager.BL\bin\Debug\netcoreapp3.0\TaskManager.DAL.pdb
+C:\Users\yyyy\source\repos\TaskManager.BL\obj\Debug\netcoreapp3.0\TaskManager.BLL.csprojAssemblyReference.cache
+C:\Users\yyyy\source\repos\TaskManager.BL\obj\Debug\netcoreapp3.0\TaskManager.BLL.AssemblyInfoInputs.cache
+C:\Users\yyyy\source\repos\TaskManager.BL\obj\Debug\netcoreapp3.0\TaskManager.BLL.AssemblyInfo.cs
+C:\Users\yyyy\source\repos\TaskManager.BL\obj\Debug\netcoreapp3.0\TaskManager.BLL.csproj.CopyComplete
+C:\Users\yyyy\source\repos\TaskManager.BL\obj\Debug\netcoreapp3.0\TaskManager.BLL.dll
+C:\Users\yyyy\source\repos\TaskManager.BL\obj\Debug\netcoreapp3.0\TaskManager.BLL.pdb
