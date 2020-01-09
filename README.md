@@ -11,8 +11,8 @@ Endpoints for WEB API:
 
 WEB API provides full CRUD functionality.
 
--Navigation to register page: localhost:4200/register
--Navigation to login page: localhost:4200/login
+- Navigation to register page: localhost:4200/register
+- Navigation to login page: localhost:4200/login
 
 How to start:
 1) Clone project from the GitHub to your local machine using GIT BASH or etc.
