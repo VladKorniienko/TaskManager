@@ -4,10 +4,10 @@ This project helps you track your tasks and to create tasks for some other users
 Also,you are able to sign-in and sign-up.
 
 Endpoints for WEB API:
-localhost:(port)/api/Users  --get all users
-localhost:(port)/api/Users/5 --get user with ID 5
-localhost:(port)/api/Tasks --get all tasks
-localhost:(port)/api/Tasks/5 --get task with ID 5
+1. localhost:(port)/api/Users  --get all users
+2. localhost:(port)/api/Users/5 --get user with ID 5
+3. localhost:(port)/api/Tasks --get all tasks
+4. localhost:(port)/api/Tasks/5 --get task with ID 5
 
 WEB API provides full CRUD functionality.
 
