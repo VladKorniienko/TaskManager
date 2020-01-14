@@ -22,7 +22,6 @@ namespace TaskManager.DAL.Repositories
             return _db.Tasks;
         }
 
-
         public Task Get(int id)
         {
             return _db.Tasks.AsNoTracking().FirstOrDefault(t => t.Id == id);
@@ -37,10 +36,12 @@ namespace TaskManager.DAL.Repositories
         {
             _db.Tasks.Update(item);
         }
+
         public IEnumerable<Task> FindByCondition(Expression<Func<Task, bool>> expression)
         {
             return _db.Tasks.Where(expression).AsNoTracking();
         }
+
         public void Delete(int id)
         {
             Task task = _db.Tasks.Find(id);

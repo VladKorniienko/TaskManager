@@ -4,6 +4,7 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
 import { RepositoryService } from 'src/app/shared/services/repository.service';
 import { User } from './../../_interfaces/user.model';
 import { UserOutput } from 'src/app/_interfaces/user-output.model';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -11,8 +12,9 @@ import { UserOutput } from 'src/app/_interfaces/user-output.model';
 })
 export class UserListComponent implements OnInit {
   public users: UserOutput[];
+  public user:any;
   public errorMessage: string = '';
-  constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router) { }
+  constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router,private http: HttpClient) { }
 
   ngOnInit() {
     this.getAllUsers();

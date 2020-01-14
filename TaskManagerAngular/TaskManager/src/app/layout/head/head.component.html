@@ -1,3 +1,31 @@
-<h1>{{title}}</h1>
-
-<button mat-button [routerLink]=" ['./logout'] ">Logout!</button>
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="app-header">
+  <span (click)="redirectToHomePage()">TASKMANAGER</span>
+  <span class="filler"></span>
+  <span class="gap">
+    <button mat-flat-button color=primary *ngIf="!isUserAuthenticated()" id="login"
+      (click)="redirectToLoginPage()">LOG IN</button>
+  </span>
+  <button mat-flat-button color=primary *ngIf="!isUserAuthenticated()" id="register"
+    (click)="redirectToRegisterPage()">REGISTER</button>
+    <button mat-icon-button *ngIf="isUserAuthenticated()" [matMenuTriggerFor]="menu" aria-label="Menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="redirectToTasksPage()">
+          <mat-icon>assignment</mat-icon>
+          <span>Tasks</span>
+        </button>
+        <button mat-menu-item (click)="redirectToAccountPage()" >
+          <mat-icon>person</mat-icon>
+          <span>Account</span>
+        </button>
+        <button mat-menu-item *ngIf="isUserAdmin()"  (click)="redirectToUsersPage()" >
+          <mat-icon>people</mat-icon>
+          <span>Users</span>
+        </button>
+      </mat-menu>
+    <button mat-icon-button *ngIf="isUserAuthenticated()" id="logout">
+        <mat-icon aria-hidden="false" aria-label="exit_to_app" (click)="redirectToLoginPage()">exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>

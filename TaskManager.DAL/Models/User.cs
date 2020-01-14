@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TaskManager.DAL.Models
+﻿namespace TaskManager.DAL.Models
 {
     public class User
     {
@@ -10,7 +8,9 @@ namespace TaskManager.DAL.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
-        public int? RoleId { get; set; }
-      
+        public string Role { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+
     }
 }

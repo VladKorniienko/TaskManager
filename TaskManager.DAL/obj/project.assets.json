@@ -5015,11 +5015,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yyyy\\source\\repos\\TaskManager.DAL\\TaskManager.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\yyyy\\source\\repos\\TaskManagerProject\\TaskManager.DAL\\TaskManager.DAL.csproj",
       "projectName": "TaskManager.DAL",
-      "projectPath": "C:\\Users\\yyyy\\source\\repos\\TaskManager.DAL\\TaskManager.DAL.csproj",
+      "projectPath": "C:\\Users\\yyyy\\source\\repos\\TaskManagerProject\\TaskManager.DAL\\TaskManager.DAL.csproj",
       "packagesPath": "C:\\Users\\yyyy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yyyy\\source\\repos\\TaskManager.DAL\\obj\\",
+      "outputPath": "C:\\Users\\yyyy\\source\\repos\\TaskManagerProject\\TaskManager.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

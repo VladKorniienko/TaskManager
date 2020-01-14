@@ -22,7 +22,8 @@ export class UserCreateComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.maxLength(60),Validators.minLength(6)]),
       name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       surname: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      email: new FormControl('', [Validators.required, Validators.maxLength(60),Validators.email])
+      email: new FormControl('', [Validators.required, Validators.maxLength(60),Validators.email]),
+      role: new FormControl('', [Validators.required])
     });
   }
   openSnackBar(message: string, action: string) {
@@ -58,7 +59,8 @@ export class UserCreateComponent implements OnInit {
       password: userFormValue.password,
       name: userFormValue.name,
       surname: userFormValue.surname,
-      email: userFormValue.email
+      email: userFormValue.email,
+      role:userFormValue.role
 
     }
  

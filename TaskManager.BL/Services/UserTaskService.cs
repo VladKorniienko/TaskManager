@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TaskManager.BLL.DTOs;
@@ -17,30 +18,70 @@ namespace TaskManager.BLL.Services
             Database = unitOfWork;
         }
 
-
-        public IEnumerable<UserTask> GetUsersAndTasks(UserTaskParameters userTaskParameters)
+        public IEnumerable<UserTask> GetAllUserTasks(UserTaskParameters userTaskParameters)
         {
-            var userTasks = Database.UserTaskRepository.GetAll();
-            SearchByLogin(ref userTasks, userTaskParameters.Login);
+            IEnumerable<UserTask> userTasks;
+            if (userTaskParameters.Valid == 1)
+            {
+                userTasks = Database.UserTaskRepository.FindByCondition(t => t.Task.Deadline >= DateTime.Now);
+            }
+            else if (userTaskParameters.Valid == -1)
+            {
+                userTasks = Database.UserTaskRepository.FindByCondition((t => t.Task.Deadline < DateTime.Now));
+            }
+            else
+            {
+                userTasks = Database.UserTaskRepository.GetAll();
+            }
+
+            userTasks = SearchByStatus(userTasks, userTaskParameters.Status);
+            userTasks = SearchByLogin(userTasks, userTaskParameters.Login);
             return userTasks;
         }
-        private void SearchByLogin(ref IEnumerable<UserTask> userTasks, string login)
+
+        private IEnumerable<UserTask> SearchByStatus(IEnumerable<UserTask> userTask, string taskStatus)
         {
-            if (!userTasks.Any() || string.IsNullOrWhiteSpace(login))
-                return;
-            else
-                userTasks = Database.UserTaskRepository.GetAll().Where(o => o.User.Login.Contains(login));
+            IEnumerable<UserTask> userTasks;
+            if (!userTask.Any() || string.IsNullOrWhiteSpace(taskStatus))
+                return userTask;
+            userTasks = userTask.Where(o => o.Task.Status.ToLower().Contains(taskStatus.ToLower()));
+            return userTasks;
+        }
+
+        private IEnumerable<UserTask> SearchByLogin(IEnumerable<UserTask> userTask, string login)
+        {
+            IEnumerable<UserTask> userTasks;
+            if (!userTask.Any() || string.IsNullOrWhiteSpace(login))
+                return userTask;
+            userTasks = userTask.Where(o => o.User.Login.Contains(login));
+            return userTasks;
         }
 
         public UserTask GetUserAndTask(int? idUser, int idTask)
         {
             var userTask = Database.UserTaskRepository.Get(idUser.Value, idTask);
             return userTask;
-
         }
-        public IEnumerable<UserTask> GetTasksByUser(int idUser)
+
+        public IEnumerable<UserTask> GetTasksByUser(int idUser, UserTaskParameters userTaskParameters)
         {
-            var userTasks = Database.UserTaskRepository.GetTasksByUser(idUser);
+            IEnumerable<UserTask> userTasks;
+            if (userTaskParameters.Valid == 1)
+            {
+                userTasks = Database.UserTaskRepository.FindByCondition(t => t.Task.Deadline >= DateTime.Now && t.UserId == idUser);
+            }
+            else if (userTaskParameters.Valid == -1)
+            {
+                userTasks = Database.UserTaskRepository.FindByCondition((t => t.Task.Deadline < DateTime.Now && t.UserId == idUser));
+            }
+            else
+            {
+                userTasks = Database.UserTaskRepository.GetTasksByUser(idUser);
+            }
+
+            userTasks = SearchByStatus(userTasks, userTaskParameters.Status);
+            userTasks = SearchByLogin(userTasks, userTaskParameters.Login);
+
             return userTasks;
         }
 
@@ -67,7 +108,6 @@ namespace TaskManager.BLL.Services
             var userTask = mapper.Map<UserTask>(userTaskDTO);
             Database.UserTaskRepository.Update(userTask);
             Database.Save();
-
         }
         public void Delete(int? idUser, int? idTask)
         {

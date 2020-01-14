@@ -6,13 +6,14 @@ import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserTask } from '../_interfaces/user-task.model';
 import { MatSnackBar } from '@angular/material';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
   public tasks: Task[];
   public users: User[];
   public userTask:UserTask[];
@@ -20,12 +21,22 @@ export class HomeComponent implements OnInit {
   public errorMessage: string = '';
  
  
-  constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router,private activeRoute: ActivatedRoute,
+  constructor(private jwtHelper: JwtHelperService, private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router,private activeRoute: ActivatedRoute,
     private _snackBar: MatSnackBar) { }
  
-  ngOnInit() {
-    this.getAllUsers();
-  }
+    isUserAuthenticated() {
+      let token: string = localStorage.getItem("jwt");
+      if (token && !this.jwtHelper.isTokenExpired(token)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    
+    public logOut = () => {
+      localStorage.removeItem("jwt");
+    }
 
   public getAllUsers(){
     let apiAddress: string = "api/Users";

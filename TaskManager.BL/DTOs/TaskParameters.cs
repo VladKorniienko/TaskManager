@@ -6,5 +6,6 @@ namespace TaskManager.BLL.DTOs
     {
         public string Status { get; set; }
         public int Valid { get; set; }
+        public string Name { get; set; }
     }
 }

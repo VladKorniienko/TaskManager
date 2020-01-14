@@ -1,0 +1,15 @@
+.example-card {
+    width: 50%;
+    height: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+    float: left;
+}
+.field-class{
+    width: 60%;
+    margin:4%;
+}
+.button-conf{
+    width:30%;
+    height:30%;
+}

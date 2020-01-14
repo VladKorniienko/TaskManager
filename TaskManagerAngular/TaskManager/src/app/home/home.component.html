@@ -1,10 +1,15 @@
-<div><mat-toolbar color=primary class="homeText">TASK MANAGER</mat-toolbar></div>
-<div class="container">
+<mat-toolbar color=primary>HOME PAGE</mat-toolbar>
+<div class="main-div">
   <mat-card>
-  <mat-card-title>
-    Project information
-  </mat-card-title>
-  <mat-card-content>
-    This project is developed by Vlad Korniienko.
-  </mat-card-content>
-</mat-card></div>
+    <mat-card-content>
+      <div *ngIf="isUserAuthenticated()">
+        <h2>
+          YOU ARE SUCCESSFULLY LOGGED IN!
+        </h2>
+      </div>
+      <div *ngIf="!isUserAuthenticated()">
+        <h2>YOU NEED TO LOGIN FIRST!</h2>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

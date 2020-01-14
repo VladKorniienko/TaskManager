@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using TaskManager.DAL.Context;
 using TaskManager.DAL.Interfaces;
 using TaskManager.DAL.Models;
@@ -28,6 +30,11 @@ namespace TaskManager.DAL.Repositories
         public IEnumerable<UserTask> GetTasksByUser(int idUser)
         {
             return _db.UserTask.AsNoTracking().Include(u => u.Task).Include(u => u.User).Where(t => t.UserId == idUser);
+        }
+
+        public IEnumerable<UserTask> FindByCondition(Expression<Func<UserTask, bool>> expression)
+        {
+            return _db.UserTask.Where(expression).AsNoTracking().Include(u => u.Task).Include(t => t.User); ;
         }
 
         public void Create(UserTask item)

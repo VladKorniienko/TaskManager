@@ -1,0 +1,95 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="userForm" class="form-form" novalidate (ngSubmit)="registerUser(userForm.value)">
+
+      <mat-card-content>
+        <mat-error *ngIf="invalidForm" class="alert alert-danger">Invalid login!</mat-error>
+        <mat-form-field class="form-full-width">
+          <div class="form-group">
+            <input matInput id="login" name="login" formControlName="login" placeholder="Login">
+          </div>
+          <mat-error *ngIf="hasError('login', 'minlength') && !hasError('login', 'required')">
+            Minimum length is 6
+          </mat-error>
+          <mat-error *ngIf="hasError('login', 'required')">
+            Login is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+          <div class="form-group">
+            <input matInput type="email" id="email" name="email" formControlName="email" placeholder="Email">
+          </div>
+          <mat-error *ngIf="hasError('email', 'maxlength') && !hasError('email', 'required')">
+            Maximum length is 60
+          </mat-error>
+          <mat-error *ngIf="hasError('email', 'required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="hasError('email', 'email')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+          <div class="form-group">
+            <input matInput type="password" id="password" name="password" formControlName="password"
+              placeholder="Password">
+          </div>
+          <mat-error *ngIf="hasError('password', 'minlength') && !hasError('password', 'required')">
+            Minimum length is 6
+          </mat-error>
+          <mat-error *ngIf="hasError('password', 'required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="form-full-width">
+          <div class="form-group">
+            <input matInput id="name" name="name" formControlName="name" placeholder="Name">
+          </div>
+          <mat-error *ngIf="hasError('name', 'maxlength') && !hasError('name', 'required')">
+            Maximum length is 60
+          </mat-error>
+          <mat-error *ngIf="hasError('name', 'required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+          <div class="form-group">
+            <input matInput id="surname" name="surname" formControlName="surname" placeholder="Surname">
+          </div>
+          <mat-error *ngIf="hasError('surname', 'maxlength') && !hasError('surname', 'required')">
+            Maximum length is 60
+          </mat-error>
+          <mat-error *ngIf="hasError('surname', 'required')">
+            Surname is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+          <mat-label>Choose a role</mat-label>
+          <div class="form-group">
+            <mat-select formControlName="role">
+              <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+              </mat-option>
+            </mat-select>
+          </div>
+          <mat-error *ngIf="hasError('role', 'required')">
+            Role is required!
+          </mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" [disabled]="!userForm.valid" class="btn-block">Register</button>
+
+    </form>
+  </mat-card>
+</div>

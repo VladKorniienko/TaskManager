@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>Details</h1>
+<div mat-dialog-content>
+  <div class="row" style="margin:4%;">
+    <div class="col-md-3">
+      <label for="name" class="control-label">Task name:</label>
+    </div>
+    <div class="col-md-7">
+      <span name="name">
+        {{task.name}}
+      </span>
+    </div>
+  </div>
+  <div class="row" style="margin:4%;">
+    <div class="col-md-3">
+      <label for="deadline" class="control-label">Deadline:</label>
+    </div>
+    <div class="col-md-7">
+      <span name="deadline">
+        {{task.deadline}}
+      </span>
+    </div>
+  </div>
+  <div class="row" style="margin:4%;">
+    <div class="col-md-3">
+      <label for="created" class="control-label">Created:</label>
+    </div>
+    <div class="col-md-7">
+      <span name="created">
+        {{task.created}}
+      </span>
+    </div>
+  </div>
+  
+  <div class="row" style="margin:4%;">
+    <div class="col-md-3">
+      <label for="description" class="control-label">Description:</label>
+    </div>
+    <div class="col-md-7">
+      <span name="description">
+        {{task.description}}
+      </span>
+    </div>
+  
+  
+  </div>
+  <div class="row" style="margin:4%;">
+    <div class="col-md-3">
+      <label for="status" class="control-label">Status:</label>
+    </div>
+    <div class="col-md-7">
+      <span name="status">
+        {{task.status}}
+      </span>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="accent" style="margin:2%;">CLOSE</button>
+</div>
+
+
+
+
+
+

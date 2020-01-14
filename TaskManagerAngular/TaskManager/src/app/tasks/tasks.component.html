@@ -1,0 +1,87 @@
+<mat-toolbar color=primary>LIST OF ALL TASKS</mat-toolbar>
+<div class="main-div">
+    
+  <mat-card>
+    <mat-card-content>
+       
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button class="sp" (click)="getAllTasksForUserValid(1)" value="1">UP-TO-DATE</mat-radio-button>
+        <mat-radio-button class="sp" (click)="getAllTasksForUserValid(-1)" value="2">EXPIRED</mat-radio-button>
+        <mat-radio-button class="sp" (click)="getAllTasksForUserByStatus('Finished')" value="3">FINISHED
+        </mat-radio-button>
+        <mat-radio-button class="sp" (click)="getAllTasksForUserByStatus('InProgress')" value="4">IN PROGRESS
+        </mat-radio-button>
+        <mat-radio-button class="sp" (click)="getAllTasksForUserByStatus('Created')" value="3">CREATED
+        </mat-radio-button>
+        <mat-radio-button class="sp" (click)="getAllTasksForUserByStatus('WaitingForApproval')" value="4">WAITING FOR
+          APPROVAL</mat-radio-button>
+        <mat-radio-button class="sp" (click)="getAllTasksForUser()" value="5">ALL</mat-radio-button>
+      </mat-radio-group>
+
+      <button style="float: right;" mat-fab color="accent" matTooltip="Add new">
+        <mat-icon aria-hidden="false" aria-label="add" (click)="redirectToCreate()">add
+        </mat-icon>
+      </button>
+
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.task.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="deadline">
+          <th mat-header-cell *matHeaderCellDef> Deadline </th>
+          <td mat-cell *matCellDef="let element "> {{element.task.deadline}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.task.status}} </td>
+        </ng-container>
+
+        
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Delete">
+              <mat-icon aria-hidden="false" aria-label="delete" (click)="deleteExecute(element.userId,element.taskId)">
+                delete
+              </mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        
+       
+          
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Details">
+              <mat-icon aria-hidden="false" aria-label="details" (click)="openDialog(element.taskId)">description
+              </mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Edit">
+              <mat-icon aria-hidden="false" aria-label="edit" (click)="redirectToUpdate(element.taskId)">edit
+              </mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      
+    </mat-card-content>
+  </mat-card>
+  
+</div>

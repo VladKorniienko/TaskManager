@@ -17,7 +17,6 @@ namespace TaskManager
 
                 var context = services.GetRequiredService<EFDBContext>();
 
-
             }
             host.Run();
         }

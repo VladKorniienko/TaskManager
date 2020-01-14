@@ -20,15 +20,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{user.name}}</td>
-            <td>{{user.surname}}</td>
-            <td>{{user.login }}</td>
-            <td>{{user.email }}</td>
+          <tr *ngFor="let us of users">
+            <td>{{us.name}}</td>
+            <td>{{us.surname}}</td>
+            <td>{{us.login }}</td>
+            <td>{{us.email }}</td>
             <td><button mat-raised-button color=primary type="button" id="update"
-                (click)="redirectToUpdatePage(user.id)">Update</button></td>
+                (click)="redirectToUpdatePage(us.id)">Update</button></td>
             <td><button mat-icon-button>
-                <mat-icon aria-hidden="false" aria-label="delete" (click)="redirectToDeletePage(user.id)">delete
+                <mat-icon aria-hidden="false" aria-label="delete" (click)="redirectToDeletePage(us.id)">delete
                 </mat-icon>
               </button></td>
           </tr>

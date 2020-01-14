@@ -8,3 +8,14 @@ C:\Users\yyyy\source\repos\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.D
 C:\Users\yyyy\source\repos\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.DAL.pdb
 C:\Users\yyyy\source\repos\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.dll
 C:\Users\yyyy\source\repos\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.pdb
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.DAL.deps.json
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.DAL.runtimeconfig.json
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.DAL.runtimeconfig.dev.json
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.DAL.dll
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\bin\Debug\netcoreapp3.0\TaskManager.DAL.pdb
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.AssemblyInfoInputs.cache
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.AssemblyInfo.cs
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.dll
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.pdb
+C:\Users\yyyy\source\repos\TaskManagerProject\TaskManager.DAL\obj\Debug\netcoreapp3.0\TaskManager.DAL.csprojAssemblyReference.cache

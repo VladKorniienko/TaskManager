@@ -6,17 +6,15 @@ namespace TaskManager.DAL.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private EFDBContext _db;
-        private IUserRepository _userRepository;
-       
-        private ITaskRepository _taskRepository;
-        private IUserTaskRepository _userTaskRepository;
+        private readonly EFDBContext _db;
+        private readonly IUserRepository _userRepository;
+        private readonly ITaskRepository _taskRepository;
+        private readonly IUserTaskRepository _userTaskRepository;
 
         public UnitOfWork(EFDBContext context, IUserRepository userRepository,  ITaskRepository taskRepository, IUserTaskRepository userTaskRepository)
         {
             this._db = context;
             this._userRepository = userRepository;
-           
             this._taskRepository = taskRepository;
             this._userTaskRepository = userTaskRepository;
 
@@ -30,10 +28,6 @@ namespace TaskManager.DAL.Repositories
                 return _userRepository;
             }
         }
-
-     
-        
-
         public ITaskRepository TaskRepository
         {
             get
@@ -53,10 +47,6 @@ namespace TaskManager.DAL.Repositories
         {
             _db.SaveChanges();
         }
-        public void SaveAsync()
-        {
-            _db.SaveChangesAsync();
-        }
 
         private bool disposed = false;
 
@@ -68,7 +58,6 @@ namespace TaskManager.DAL.Repositories
                 {
                     _db.Dispose();
                 }
-
                 this.disposed = true;
             }
         }

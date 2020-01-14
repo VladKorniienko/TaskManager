@@ -8,7 +8,6 @@ namespace TaskManager.DAL.Context
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Task> Tasks { get; set; }
-
         public DbSet<UserTask> UserTask { get; set; }
 
         public EFDBContext(DbContextOptions<EFDBContext> options) : base(options)
@@ -20,16 +19,15 @@ namespace TaskManager.DAL.Context
         {
             base.OnModelCreating(modelBuilder);
 
-
             modelBuilder.Entity<UserTask>()
                 .HasKey(ut => new { ut.UserId, ut.TaskId });
-
-
 
             modelBuilder.Entity<User>().Property(u => u.Login).IsRequired();
             modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
             modelBuilder.Entity<User>().Property(u => u.Name).IsRequired();
+            modelBuilder.Entity<User>().Property(u => u.Surname).IsRequired();
             modelBuilder.Entity<Task>().Property(t => t.Name).IsRequired();
+            modelBuilder.Entity<Task>().Property(t => t.Status).IsRequired();
         }
 
     }

@@ -9,7 +9,6 @@ namespace TaskManager.DAL.Interfaces
     {
         IEnumerable<Task> GetAll();
         Task Get(int id);
-
         IEnumerable<Task> FindByCondition(Expression<Func<Task, bool>> expression);
         void Create(Task item);
         void Update(Task item);

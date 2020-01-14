@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using TaskManager.DAL.Models;
-
-namespace TaskManager.BLL.DTOs
+﻿namespace TaskManager.BLL.DTOs
 {
     public class UserDTO
     {
@@ -11,7 +8,9 @@ namespace TaskManager.BLL.DTOs
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
-        public int? RoleId { get; set; }
+        public string Role { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
 
     }
 }

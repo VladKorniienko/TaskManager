@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using TaskManager.BLL.DTOs;
 using TaskManager.BLL.Interfaces;
 using TaskManager.DAL.Models;
@@ -7,6 +8,7 @@ using TaskManager.Models;
 
 namespace TaskManager.Controllers
 {
+    [Authorize]
     [Route("api/UserTask")]
     [ApiController]
     public class UserTaskController : ControllerBase
@@ -22,7 +24,7 @@ namespace TaskManager.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<UserTask>> GetUserTasks([FromQuery] UserTaskParameters userTaskParameters)
         {
-            var userTasks = _service.GetUsersAndTasks(userTaskParameters);
+            var userTasks = _service.GetAllUserTasks(userTaskParameters);
             if (userTasks == null)
             {
                 return NotFound();
@@ -44,9 +46,9 @@ namespace TaskManager.Controllers
 
         // GET: api/UserTasks/5
         [HttpGet("{idUser}")]
-        public ActionResult<IEnumerable<UserTask>> GetTasksByUser(int idUser)
+        public ActionResult<IEnumerable<UserTask>> GetTasksByUser(int idUser, [FromQuery] UserTaskParameters userTaskParameters)
         {
-            var userTask = _service.GetTasksByUser(idUser);
+            var userTask = _service.GetTasksByUser(idUser, userTaskParameters);
             if (userTask == null)
             {
                 return NotFound();

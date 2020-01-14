@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using TaskManager.DAL.Models;
 
 namespace TaskManager.DAL.Interfaces
@@ -7,7 +9,7 @@ namespace TaskManager.DAL.Interfaces
     {
         IEnumerable<UserTask> GetAll();
         UserTask Get(int idUser, int idTask);
-        
+        IEnumerable<UserTask> FindByCondition(Expression<Func<UserTask, bool>> expression);
         IEnumerable<UserTask> GetTasksByUser(int idUser);
         void Create(UserTask item);
         void Update(UserTask item);

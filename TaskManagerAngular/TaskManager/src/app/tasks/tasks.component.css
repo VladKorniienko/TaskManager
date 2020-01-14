@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+  mat-card{
+      width:90%;
+  }
+  .main-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .action-buttons{
+      margin-left: 25%;
+  }
+  .sp {
+    margin: 1%; /* Отступы вокруг элемента */
+    padding: 1%; /* Поля вокруг текста */
+   } 
+   .filler {
+    flex: 1 1 auto;
+ }
+ .spinner{
+     margin-left: 40%;
+ }

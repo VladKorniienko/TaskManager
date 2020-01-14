@@ -19,22 +19,6 @@ namespace TaskManager.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TaskManager.DAL.Models.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("TaskManager.DAL.Models.Task", b =>
                 {
                     b.Property<int>("Id")
@@ -85,15 +69,19 @@ namespace TaskManager.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
                 });
@@ -113,23 +101,16 @@ namespace TaskManager.DAL.Migrations
                     b.ToTable("UserTask");
                 });
 
-            modelBuilder.Entity("TaskManager.DAL.Models.User", b =>
-                {
-                    b.HasOne("TaskManager.DAL.Models.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId");
-                });
-
             modelBuilder.Entity("TaskManager.DAL.Models.UserTask", b =>
                 {
                     b.HasOne("TaskManager.DAL.Models.Task", "Task")
-                        .WithMany("UserTasks")
+                        .WithMany()
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TaskManager.DAL.Models.User", "User")
-                        .WithMany("UserTasks")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

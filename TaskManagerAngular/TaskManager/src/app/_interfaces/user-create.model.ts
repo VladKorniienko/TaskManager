@@ -4,4 +4,5 @@ export interface UserForCreation{
     name: string;
     surname: string;
     email: string;
+    role: string;
 }

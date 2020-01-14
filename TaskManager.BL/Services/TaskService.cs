@@ -20,17 +20,8 @@ namespace TaskManager.BLL.Services
             Database = unitOfWork;
         }
 
-        /* public IEnumerable<TaskDTO> GetTasks()
-         {
-             var tasks = Database.TaskRepository.GetAll().ToList();
-             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
-             var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
-             return tasksDTO;
-         }
-         */
         public TaskDTO GetTask(int? id)
         {
-
             var task = Database.TaskRepository.Get(id.Value);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
             var taskDTO = mapper.Map<TaskDTO>(task);
@@ -53,54 +44,30 @@ namespace TaskManager.BLL.Services
                 tasks = Database.TaskRepository.GetAll();
             }
 
-            SearchByStatus(ref tasks, taskParameters.Status);
+            tasks = SearchByStatus(tasks, taskParameters.Status);
+            tasks = SearchByName(tasks, taskParameters.Name);
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
             var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
             return tasksDTO;
         }
-        private void SearchByStatus(ref IEnumerable<Task> tasks, string taskStatus)
+        private IEnumerable<Task> SearchByStatus(IEnumerable<Task> tasks, string taskStatus)
         {
+            IEnumerable<Task> taskNew;
             if (!tasks.Any() || string.IsNullOrWhiteSpace(taskStatus))
-                return;
-            else
-                tasks = Database.TaskRepository.GetAll().Where(o => o.Status.ToLower().Contains(taskStatus.ToLower()));
+                return tasks;
+            taskNew = tasks.Where(o => o.Status.ToLower().Contains(taskStatus.ToLower()));
+            return taskNew;
         }
-        public IEnumerable<TaskDTO> GetUnfinishedTasksWithValidDeadline()
+        private IEnumerable<Task> SearchByName(IEnumerable<Task> tasks, string taskName)
         {
-            var tasks = Database.TaskRepository.GetAll().Where(t => t.Status != Status.Finished.ToString()).Where(t => t.Deadline > DateTime.UtcNow);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
-            var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
-            return tasksDTO;
+            IEnumerable<Task> taskNew;
+            if (!tasks.Any() || string.IsNullOrWhiteSpace(taskName))
+                return tasks;
+            taskNew = tasks.Where(o => o.Name.Contains(taskName));
+            return taskNew;
         }
-        public IEnumerable<TaskDTO> GetUnfinishedTasksWithPassedDeadline()
-        {
-            var tasks = Database.TaskRepository.GetAll().Where(t => t.Status != Status.Finished.ToString()).Where(t => t.Deadline < DateTime.UtcNow);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
-            var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
-            return tasksDTO;
-        }
-        public IEnumerable<TaskDTO> GetFinishedTasks()
-        {
-            var tasks = Database.TaskRepository.GetAll().Where(t => t.Status == Status.Finished.ToString());
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
-            var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
-            return tasksDTO;
-        }
-        public IEnumerable<TaskDTO> GetUnfinishedTasks()
-        {
-            var tasks = Database.TaskRepository.GetAll().Where(t => t.Status != Status.Finished.ToString());
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
-            var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
-            return tasksDTO;
-        }
-        public IEnumerable<TaskDTO> GetWaitingTasks()
-        {
-            var tasks = Database.TaskRepository.GetAll().Where(t => t.Status == Status.WaitingForApproval.ToString());
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Task, TaskDTO>()).CreateMapper();
-            var tasksDTO = mapper.Map<IEnumerable<Task>, List<TaskDTO>>(tasks);
-            return tasksDTO;
-        }
+
         public void Create(TaskDTO taskDTO)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<TaskDTO, Task>()).CreateMapper();

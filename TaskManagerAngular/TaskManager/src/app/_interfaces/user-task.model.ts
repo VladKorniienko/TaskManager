@@ -6,4 +6,5 @@ export interface UserTask{
     taskId: string;
     task: Task;
     user: User;
+    progress: number;
 }

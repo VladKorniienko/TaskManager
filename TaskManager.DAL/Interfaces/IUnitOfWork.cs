@@ -3,11 +3,9 @@
     public interface IUnitOfWork
     {
         IUserRepository UserRepository { get; }
-       
         ITaskRepository TaskRepository { get; }
         IUserTaskRepository UserTaskRepository { get; }
         void Save();
-        void SaveAsync();
         void Dispose();
 
     }
